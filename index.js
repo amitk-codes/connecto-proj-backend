@@ -36,7 +36,9 @@ const reactionRoutes = require('./routes/reactions')
 const commentsRoutes = require('./routes/comments')
 const io = new Server(server, {
     cors: {
-        origin: 'https://connecto-plum.vercel.app'
+        origin: 'https://connecto-plum.vercel.app',
+        methods: ["GET", "POST"],
+        credentials: true
     }
 })
 
