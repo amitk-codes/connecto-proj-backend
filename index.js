@@ -34,21 +34,21 @@ const profileRoutes = require('./routes/profile')
 const connRequestsRoutes = require('./routes/conn-request')
 const reactionRoutes = require('./routes/reactions')
 const commentsRoutes = require('./routes/comments')
-const io = new Server(server, {
-    cors: {
-        origin: '*',
-        methods: ["GET", "POST"],
-        credentials: true
-    }
-})
+// const io = new Server(server, {
+//     cors: {
+//         origin: '*',
+//         methods: ["GET", "POST"],
+//         credentials: true
+//     }
+// })
 
 // let roomName = ""
 
-io.on('connection', (socket) => {
-    // console.log('a user is connected', socket.id)
-    // console.log(socket.handshake.query.userId)
-    socket.join(socket.handshake.query.userId)
-})
+// io.on('connection', (socket) => {
+//     // console.log('a user is connected', socket.id)
+//     // console.log(socket.handshake.query.userId)
+//     socket.join(socket.handshake.query.userId)
+// })
 
 // --------------------------------------------------------------------------------------
 app.use(cors())
@@ -81,7 +81,7 @@ profileRoutes(app)
 
 
 
-connRequestsRoutes(app, io)
+connRequestsRoutes(app)
 
 
 

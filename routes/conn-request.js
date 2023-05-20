@@ -4,7 +4,7 @@ const mongoose = require('mongoose');
 const { Users } = require("../models/user");
 const { Notifications } = require("../models/notification");
 
-module.exports = (app, io) => {
+module.exports = (app) => {
   
 app.post('/checkrequest', auth, async (req, res) => {
   const userId = req.user._id
@@ -44,7 +44,7 @@ app.post('/sendrequest', auth, async (req, res) => {
 
       await savedConnection.save()
       await notification.save()
-      io.to(otherProfileId).emit('sendrequest', `${userIdName} sent you a friend request`)
+      // io.to(otherProfileId).emit('sendrequest', `${userIdName} sent you a friend request`)
       res.status(200).send({ status: 1, message: 'Friend Request Sent' })
       await session.commitTransaction()
   } catch (err) {
