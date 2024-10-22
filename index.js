@@ -27,6 +27,7 @@ const http = require('http')
 const server = http.createServer(app)
 const { Server } = require('socket.io')
 const { Reactions } = require('./models/reaction')
+const healthRoute = require('./routes/health')
 const loginSignup = require('./routes/login-signup')
 const notification = require('./routes/notification')
 const postRoutes = require('./routes/post')
@@ -64,6 +65,8 @@ app.use(cookieParser())
 
 app.use(express.static(`${__dirname}/public`))
 
+
+app.use('/health', healthRoute)
 
 
 loginSignup(app)
